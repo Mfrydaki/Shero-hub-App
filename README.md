@@ -1,151 +1,232 @@
-#  Shero Hub
-Shero Hub is a beginner-friendly full-stack event management application.  
-It allows users to register, log in, create events, and join or leave events.  
-Both the frontend (React) and backend (Django + MongoDB) are organized in a single monorepo.
 
----
+# Shero Hub
+
+Shero Hub is a full-stack event management application built as a personal software development project.
+
+The application allows users to register, log in, explore events, create events, and attend or leave events.
+
+The frontend and backend are organized in a single repository.
 
 ## Features
-- JWT-based authentication (register/login with PyJWT)  
-- User registration with hashed passwords (Django hashers)  
-- Event management:
-  - Create a new event (title, description, details, date, image)
-  - View all events (public)
-  - View single event details
-  - Attend / Unattend events  
--  DRF browsable API for testing  
--  Clean fullstack architecture in a **single repo (monorepo)**  
 
----
+- User registration and login
+- JWT-based authentication using PyJWT
+- Secure password hashing with Django
+- Create events with a title, description, details, date, and image
+- Browse available events
+- View individual event details
+- Attend and unattend events
+- REST API connecting the frontend and backend
+- MongoDB database integration
 
 ## Technologies Used
 
-### 🔙 Backend
-- Python 3.11+  
-- Django 5 + Django REST Framework  
-- PyMongo (MongoDB Atlas)  
-- PyJWT (JWT authentication)  
-- django-cors-headers  
-- python-dotenv  
+### Backend
 
-### 🖥️ Frontend
-- React + Vite  
-- Tailwind CSS  
-- React Router  
-- Axios  
-- Context API for auth state  
+- Python 3.11+
+- Django 5
+- Django REST Framework
+- PyMongo
+- MongoDB Atlas
+- PyJWT
+- django-cors-headers
+- python-dotenv
 
----
+### Frontend
+
+- React
+- Vite
+- JavaScript
+- Tailwind CSS
+- React Router
+- Axios
+- Context API
 
 ## Local Setup
 
-### ✅ Prerequisites
-- Python 3.11+  
-- Node.js 18+  
-- MongoDB Atlas account  
-- Git  
+### Prerequisites
 
----
+Before running the project, make sure you have:
+
+- Python 3.11+
+- Node.js 18+
+- Git
+- A MongoDB Atlas account
 
 ## Installation
 
-### 1) Clone the project
+### 1. Clone the Repository
+
 ```bash
-git clone https://github.com/Mfrydaki/shero_hub.git
-cd shero_hub
+git clone https://github.com/Mfrydaki/Shero-hub-App.git
+cd Shero-hub-App
+```
 
+### 2. Backend Setup
 
-### Backend Setup
-
-i. Go to the backend folder and create a virtual environment:
+Open a terminal and navigate to the backend folder:
 
 ```bash
 cd my_events_backend
-python -m venv venv
+```
 
-ii. Activate the virtual environment:
+Create a Python virtual environment:
 
 ```bash
-# On macOS/Linux
-source venv/bin/activate
-# On Windows
-venv\Scripts\activate  
+python -m venv venv
+```
 
-iii. Install dependencies:
+Activate the virtual environment.
+
+On macOS/Linux:
+
+```bash
+source venv/bin/activate
+```
+
+On Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Install the required Python packages:
 
 ```bash
 pip install -r requirements.txt
+```
 
-iv. Create a .env file inside my_events_backend/:
+Create a `.env` file inside `my_events_backend/` and add the following variables:
 
+```env
 SECRET_KEY=your_secret_key
 DEBUG=True
 MONGODB_URI=your_mongodb_atlas_uri
 MONGODB_DB_NAME=my_events_backend
 CORS_ALLOWED_ORIGINS=http://localhost:5173
+```
 
-v. Run the backend:
+Replace the placeholder values with your own configuration.
+
+Never upload real passwords, API keys, or database credentials to GitHub.
+
+Start the Django development server:
 
 ```bash
 python manage.py runserver
+```
+
+The backend should be available at:
+
+http://127.0.0.1:8000
 
 DRF browsable API:
+
 http://127.0.0.1:8000/events/
 
+### 3. Frontend Setup
 
-###Frontend Setup
+Keep the backend server running.
 
-i. Go to the frontend folder, install dependencies and run:
+Open a new terminal in the root folder of the project and navigate to the frontend directory:
 
 ```bash
-cd ../my_events_app
+cd my_events_app
+```
+
+Install the frontend dependencies:
+
+```bash
 npm install
-npm run dev
+```
 
-Default dev URLs:
+Create a `.env` file inside `my_events_app/`:
 
-Frontend → http://localhost:5173
-Backend → http://127.0.0.1:8000
-
-If needed, create .env inside my_events_app/:
+```env
 VITE_API_BASE_URL=http://127.0.0.1:8000
+```
 
-### Folder Structure
+Start the frontend development server:
 
-shero_hub/
-├── my_events_backend/   → Django backend (DRF + PyMongo)
-├── my_events_app/       → React frontend
+```bash
+npm run dev
+```
+
+The frontend should be available at:
+
+http://localhost:5173
+
+### 4. Local Development URLs
+
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost:5173 |
+| Backend | http://127.0.0.1:8000 |
+| Events API | http://127.0.0.1:8000/events/ |
+
+## API Endpoints
+
+### Authentication
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/auth/register/` | Register a new user |
+| POST | `/auth/login/` | Log in and receive a JWT |
+| GET | `/auth/profile/` | Retrieve authenticated user profile |
+
+### Events
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/events/` | List all events |
+| POST | `/events/` | Create a new event |
+| GET | `/events/:id/` | View event details |
+| POST | `/events/:id/attend/` | Attend an event |
+| POST | `/events/:id/unattend/` | Leave an event |
+
+Protected endpoints require JWT authentication.
+
+## Project Structure
+
+```text
+Shero-hub-App/
+├── my_events_backend/    # Django backend
+├── my_events_app/        # React frontend
+├── screenshots/          # Application screenshots
 ├── .gitignore
 └── README.md
+```
 
-### Environment Variables
+## Environment Variables
 
-Backend (my_events_backend/.env):
+The application uses environment variables to manage configuration.
 
+Backend:
+
+```env
 SECRET_KEY=your_secret_key
 DEBUG=True
 MONGODB_URI=your_mongodb_atlas_uri
 MONGODB_DB_NAME=my_events_backend
 CORS_ALLOWED_ORIGINS=http://localhost:5173
+```
 
-Frontend (my_events_app/.env):
+Frontend:
 
-
+```env
 VITE_API_BASE_URL=http://127.0.0.1:8000
+```
+
+The `.env` files should remain local and must not be committed to the repository.
 
 
-### API Endpoints
+## About This Project
 
-Auth
+I developed Shero Hub as my final project for the Coding Factory Software Development Bootcamp at Athens University of Economics and Business (AUEB).
 
-POST /auth/register/ → Register a new user
-POST /auth/login/ → Login and receive JWT
+The project gave me the opportunity to put what I had learned into practice by building a full-stack application from scratch.
 
-Events
+Through this experience, I worked with frontend and backend development, REST APIs, user authentication, and database integration.
 
-GET /events/ → List all events (public)
-POST /events/ → Create a new event (requires JWT)
-GET /events/:id/ → Get event details
-POST /events/:id/attend/ → Attend an event (requires JWT)
-POST /events/:id/unattend/ → Unattend an event (requires JWT)
+
 

@@ -8,3 +8,12 @@ env/
 
 .idea/
 .vscode/
+
+# Additional environment files
+.env.*
+!.env.example
+
+# React / Node.js
+node_modules/
+dist/
+build/

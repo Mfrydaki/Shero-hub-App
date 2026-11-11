@@ -1,12 +1,8 @@
 
-cat > .gitignore << 'EOF'
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
 *.sqlite3
-.env
 venv/
 ENV/
 env/
@@ -15,6 +11,11 @@ env/
 db.sqlite3
 media/
 staticfiles/
+
+# Environment variables
+.env
+.env.*
+!.env.example
 
 # Node / React
 node_modules/
@@ -31,4 +32,6 @@ yarn-error.log*
 .idea/
 .vscode/
 *.swp
+
+# Backups
 shero_hub_backup_*/

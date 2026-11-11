@@ -1,7 +1,7 @@
 
 # Shero Hub
 
-Shero Hub is a full-stack event management application built as a personal software development project.
+Shero Hub is a full-stack event management application developed as my final project for the Coding Factory Software Development Bootcamp at Athens University of Economics and Business (AUEB).
 
 The application allows users to register, log in, explore events, create events, and attend or leave events.
 
@@ -34,8 +34,7 @@ The frontend and backend are organized in a single repository.
 
 ### Frontend
 
-- React
-- Vite
+- React 19 (Create React App)
 - JavaScript
 - Tailwind CSS
 - React Router
@@ -49,7 +48,7 @@ The frontend and backend are organized in a single repository.
 Before running the project, make sure you have:
 
 - Python 3.11+
-- Node.js 18+
+- Node.js and npm
 - Git
 - A MongoDB Atlas account
 
@@ -96,14 +95,14 @@ Install the required Python packages:
 pip install -r requirements.txt
 ```
 
-Create a `.env` file inside `my_events_backend/` and add the following variables:
+Create a `.env` file inside `my_events_backend/`:
 
 ```env
 SECRET_KEY=your_secret_key
 DEBUG=True
 MONGODB_URI=your_mongodb_atlas_uri
 MONGODB_DB_NAME=my_events_backend
-CORS_ALLOWED_ORIGINS=http://localhost:5173
+CORS_ALLOWED_ORIGINS=http://localhost:3000
 ```
 
 Replace the placeholder values with your own configuration.
@@ -143,24 +142,24 @@ npm install
 Create a `.env` file inside `my_events_app/`:
 
 ```env
-VITE_API_BASE_URL=http://127.0.0.1:8000
+REACT_APP_API_URL=http://127.0.0.1:8000
 ```
 
-Start the frontend development server:
+Start the React development server:
 
 ```bash
-npm run dev
+npm start
 ```
 
 The frontend should be available at:
 
-http://localhost:5173
+http://localhost:3000
 
 ### 4. Local Development URLs
 
 | Service | URL |
 |---------|-----|
-| Frontend | http://localhost:5173 |
+| Frontend | http://localhost:3000 |
 | Backend | http://127.0.0.1:8000 |
 | Events API | http://127.0.0.1:8000/events/ |
 
@@ -199,26 +198,25 @@ Shero-hub-App/
 
 ## Environment Variables
 
-The application uses environment variables to manage configuration.
+The application uses environment variables for local configuration.
 
-Backend:
+### Backend
 
 ```env
 SECRET_KEY=your_secret_key
 DEBUG=True
 MONGODB_URI=your_mongodb_atlas_uri
 MONGODB_DB_NAME=my_events_backend
-CORS_ALLOWED_ORIGINS=http://localhost:5173
+CORS_ALLOWED_ORIGINS=http://localhost:3000
 ```
 
-Frontend:
+### Frontend
 
 ```env
-VITE_API_BASE_URL=http://127.0.0.1:8000
+REACT_APP_API_URL=http://127.0.0.1:8000
 ```
 
-The `.env` files should remain local and must not be committed to the repository.
-
+Environment files should remain local and must not be committed to the repository.
 
 ## About This Project
 
@@ -228,5 +226,9 @@ The project gave me the opportunity to put what I had learned into practice by b
 
 Through this experience, I worked with frontend and backend development, REST APIs, user authentication, and database integration.
 
+## Author
 
+Maria Frydaki
+
+[LinkedIn](https://www.linkedin.com/in/maria-fryd/)
 

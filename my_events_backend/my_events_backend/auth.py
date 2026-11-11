@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from django.http import HttpRequest
 
 # Configuration
-SECRET: str = os.environ.get("JWT_SECRET", "my-secret")
+SECRET: str = os.environ["JWT_SECRET"]
 ALGORITHM: str = "HS256"
 LIFETIME_MINUTES: int = 30  # Token lifetime in minutes
 
